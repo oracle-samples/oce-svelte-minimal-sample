@@ -1,6 +1,6 @@
 <!--
 /**
- * Copyright (c) 2021, Oracle and/or its affiliates.
+ * Copyright (c) 2020, 2022, Oracle and/or its affiliates.
  * Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
  */
 -->
@@ -39,7 +39,7 @@
 </script>
 
 <header id="header">
-  <a href="{pages[0].slug}" style="text-decoration:none">
+  <a href="page/{pages[0].slug}" style="text-decoration:none">
     <picture>
       <source type="image/webp" srcset={headerRenditionURLs.srcset} />
       <img id="header-image" src={headerRenditionURLs.native} alt="Company Logo"

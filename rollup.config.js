@@ -1,10 +1,11 @@
 /**
- * Copyright (c) 2021, Oracle and/or its affiliates.
+ * Copyright (c) 2020, 2022, Oracle and/or its affiliates.
  * Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
  */
 
 import dotenv from 'dotenv';
 import path from 'path';
+import ignore from 'rollup-plugin-ignore';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
@@ -44,6 +45,10 @@ export default {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
+      ignore([
+        'https',
+        'url',
+      ]),
 			replace({
 				preventAssignment: true,
 				values:{
@@ -53,12 +58,6 @@ export default {
           'process.env.SERVER_URL': JSON.stringify(process.env.SERVER_URL),
           'process.env.API_VERSION': JSON.stringify(process.env.API_VERSION),
           'process.env.CHANNEL_TOKEN': JSON.stringify(process.env.CHANNEL_TOKEN),
-          'process.env.PREVIEW': JSON.stringify(process.env.PREVIEW),
-          'process.env.AUTH': JSON.stringify(process.env.AUTH),
-          'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
-          'process.env.CLIENT_SECRET': JSON.stringify(process.env.CLIENT_SECRET),
-          'process.env.CLIENT_SCOPE_URL': JSON.stringify(process.env.CLIENT_SCOPE_URL),
-          'process.env.IDCS_URL': JSON.stringify(process.env.IDCS_URL),
           'process.env.PORT': JSON.stringify(process.env.PORT)
 				},
 			}),
@@ -118,12 +117,6 @@ export default {
           'process.env.SERVER_URL': JSON.stringify(process.env.SERVER_URL),
           'process.env.API_VERSION': JSON.stringify(process.env.API_VERSION),
           'process.env.CHANNEL_TOKEN': JSON.stringify(process.env.CHANNEL_TOKEN),
-          'process.env.PREVIEW': JSON.stringify(process.env.PREVIEW),
-          'process.env.AUTH': JSON.stringify(process.env.AUTH),
-          'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
-          'process.env.CLIENT_SECRET': JSON.stringify(process.env.CLIENT_SECRET),
-          'process.env.CLIENT_SCOPE_URL': JSON.stringify(process.env.CLIENT_SCOPE_URL),
-          'process.env.IDCS_URL': JSON.stringify(process.env.IDCS_URL),
           'process.env.PORT': JSON.stringify(process.env.PORT)
 				},
 			}),
